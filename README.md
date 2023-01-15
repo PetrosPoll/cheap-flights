@@ -1,4 +1,4 @@
------- THIS PROJECT IS STILL IN PROGRESS! -----
+# ------ THIS PROJECT IS STILL IN PROGRESS! -----
 
 The idea is an application where you can find cheapest flights no matter from where to where. Just the cheapest flights.
 Login with your account, find the flights and save them on your profile.
@@ -18,3 +18,5 @@ I'm gonna use the following
 - .env concept
 - Bootstrap
 - Many other small libraries to achieve different concepts
+
+![](screenshot.png)
