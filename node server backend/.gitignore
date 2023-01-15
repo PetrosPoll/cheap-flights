@@ -1,0 +1,4 @@
+# prevent from commit these files
+.env
+
+/node_modules/

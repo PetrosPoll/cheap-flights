@@ -1,0 +1,32 @@
+
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 100px 40px 40px 40px;
+    box-shadow: 0px 8px 36px #222;
+    background-color: #fefefe;
+  }
+  
+  form > h1 {
+    display: flex;
+    justify-content: center;
+    font-family: "Helvetica";
+    font-size: 2em;
+    font-weight: 500;
+    margin-top: 0.25em;
+    color: #222;
+    letter-spacing: 2px;
+  }
+  
+  .error {
+    color:#db2269;
+    font-size: 0.5em;
+    display: relative;
+  }
+
+  .login_col1{
+      width:100%; 
+      box-shadow: 0px 8px 36px #222;
+  }
