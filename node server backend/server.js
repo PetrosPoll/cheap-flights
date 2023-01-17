@@ -19,6 +19,10 @@ connectDB();
 
 // routes
 app.use('/register', jsonParser, require('./routes/register'));
+app.use('/login', jsonParser, require('./routes/login'), function(req, res) {
+    // do something
+    console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+ });
 
 // check the connection
 mongoose.connection.once('open', () => {

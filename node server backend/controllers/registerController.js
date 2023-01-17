@@ -2,7 +2,6 @@ const User = require('../model/User');
 const bcrypt = require('bcrypt');
 
 const handleUser = async (req, res) => {
-    console.log(req.body);
     const { user, pwd, email, country} = req.body;
     
     if(!user || !pwd || !email) 
@@ -24,9 +23,6 @@ const handleUser = async (req, res) => {
             'password': cryptedPassword,
             'country': country
         });
-
-        // View the result in console
-        console.log(result);
 
         res.status(201).json({ 'success': `New user ${user} created! Congratulations!` })
     } catch (err) {

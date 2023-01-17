@@ -16,34 +16,29 @@ const Login = () => {
 
     const handlelogin = () => {
 
-        alert('Try tried to login! ');
         // request
-        //     axios({
-        //         method: "POST",
-        //         withCredentials: true,
-        //         data: {
-        //             username: username, 
-        //             password: password, 
-        //         },
-        //         url: "http://localhost:3001/register",
-        //       }).then( response => {
+        axios({
+            method: "POST",
+            withCredentials: false,
+            data: {
+                username: username, 
+                pwd: password, 
+            },
+            url: "http://localhost:3001/login",
+          }).then( response => {
+        
+            if (response.data.status === "200") {
+                setError(response.data.message);
+                // DO something else                
+            } else if(response.data.status === "401"){
+                setError(response.data.message);
+            } else {
+                setError("Something went wrong");
+            }
 
-        //         if (response.data.message === "Success") {
-        //             props.history.push("/Dashboard");                 
-        //         } else if(response.data.message === "Failure"){
-        //             props.history.push('/');
-        //         } else {
-        //             console.log("F");
-        //         }
-
-        //     }).catch( error => {
-        //         if (error.message.status === 401 || error.message.status === 400) {
-        //             setError(error.response.data.message);
-        //         }
-        //         else {
-        //             setError("Something went wrong. Please try again later.");
-        //         }
-        //     });
+        }).catch( error => {
+                setError(error.message);
+        });
     }
 
     return (
@@ -63,7 +58,7 @@ const Login = () => {
 
                         <Form.Label>
                             <InputGroup className="mb-3">
-                                <InputGroup.Text id="basic-addon1" style={{borderTopRightRadius: '0px', borderBottomRightRadius: '0px',}}>@</InputGroup.Text>
+                                <InputGroup.Text id="basic-addon1" style={{ borderTopRightRadius: '0px', borderBottomRightRadius: '0px', }}>@</InputGroup.Text>
                                 <Form.Control
                                     placeholder="Username"
                                     aria-label="Username"
@@ -77,7 +72,7 @@ const Login = () => {
                         <Form.Label>
 
                             <InputGroup className="mb-3">
-                                <InputGroup.Text id="basic-addon1" style={{borderTopRightRadius: '0px', borderBottomRightRadius: '0px',}}> {<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lock" viewBox="0 0 16 16">
+                                <InputGroup.Text id="basic-addon1" style={{ borderTopRightRadius: '0px', borderBottomRightRadius: '0px', }}> {<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lock" viewBox="0 0 16 16">
                                     <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
                                 </svg>}</InputGroup.Text>
                                 <Form.Control
@@ -91,6 +86,7 @@ const Login = () => {
                             </InputGroup>
                         </Form.Label>
                         <Button variant="warning" onClick={handlelogin}>Submit</Button>
+                        <p style={{color: 'red', textAlign: 'center', marginTop: '10px'}}>{error}</p>
                     </Form>
                 </Col>
             </Row>
